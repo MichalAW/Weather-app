@@ -1,0 +1,35 @@
+body {
+    background-color: lightcoral;
+    font-style: arial;
+}
+.image {
+    width: 100%;
+    max-width: 350px;
+}
+
+.styles {
+    font-size: 15px;
+    width: 90%;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+}
+
+button {
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 1px;
+    border: 1px solid red;
+}
+
+input {
+        width: 30%;
+        -webkit-box-sizing: border-box;
+        /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box;
+        /* Firefox, other Gecko */
+        box-sizing: border-box;
+        /* Opera/IE 8+ */
+}

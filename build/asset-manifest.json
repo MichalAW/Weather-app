@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/MichalAW/Book-searche/static/css/main.cb2e4b11.chunk.css",
+    "main.js": "/MichalAW/Book-searche/static/js/main.0f7afa84.chunk.js",
+    "main.js.map": "/MichalAW/Book-searche/static/js/main.0f7afa84.chunk.js.map",
+    "runtime~main.js": "/MichalAW/Book-searche/static/js/runtime~main.92ce98e9.js",
+    "runtime~main.js.map": "/MichalAW/Book-searche/static/js/runtime~main.92ce98e9.js.map",
+    "static/js/2.84f2e720.chunk.js": "/MichalAW/Book-searche/static/js/2.84f2e720.chunk.js",
+    "static/js/2.84f2e720.chunk.js.map": "/MichalAW/Book-searche/static/js/2.84f2e720.chunk.js.map",
+    "index.html": "/MichalAW/Book-searche/index.html",
+    "precache-manifest.4409276b3d7cc4c91a7e82b905edd099.js": "/MichalAW/Book-searche/precache-manifest.4409276b3d7cc4c91a7e82b905edd099.js",
+    "service-worker.js": "/MichalAW/Book-searche/service-worker.js",
+    "static/css/main.cb2e4b11.chunk.css.map": "/MichalAW/Book-searche/static/css/main.cb2e4b11.chunk.css.map"
+  }
+}
