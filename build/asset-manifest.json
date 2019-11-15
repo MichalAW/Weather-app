@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/MichalAW/Weather-app/static/css/main.6dc8d5a8.chunk.css",
+    "main.js": "/MichalAW/Weather-app/static/js/main.eb5d35c2.chunk.js",
+    "main.js.map": "/MichalAW/Weather-app/static/js/main.eb5d35c2.chunk.js.map",
+    "runtime~main.js": "/MichalAW/Weather-app/static/js/runtime~main.2311e1ab.js",
+    "runtime~main.js.map": "/MichalAW/Weather-app/static/js/runtime~main.2311e1ab.js.map",
+    "static/js/2.bdd08165.chunk.js": "/MichalAW/Weather-app/static/js/2.bdd08165.chunk.js",
+    "static/js/2.bdd08165.chunk.js.map": "/MichalAW/Weather-app/static/js/2.bdd08165.chunk.js.map",
+    "index.html": "/MichalAW/Weather-app/index.html",
+    "precache-manifest.f34caa1eb606f45c675d99c7b5153f28.js": "/MichalAW/Weather-app/precache-manifest.f34caa1eb606f45c675d99c7b5153f28.js",
+    "service-worker.js": "/MichalAW/Weather-app/service-worker.js",
+    "static/css/main.6dc8d5a8.chunk.css.map": "/MichalAW/Weather-app/static/css/main.6dc8d5a8.chunk.css.map",
+    "static/media/weather.jpg": "/MichalAW/Weather-app/static/media/weather.4ec449d3.jpg"
+  }
+}
