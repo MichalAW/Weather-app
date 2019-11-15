@@ -6,6 +6,7 @@ import "../sass/style.scss";
 class App extends React.Component {
 	constructor(props) {
 		super(props);
+		// source of location, degree, forecast, main
 		this.state = { location: '', degree: '', forecast: [], main: '' }
 	}
 
@@ -14,124 +15,52 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		this.getWeather();
+		this.getLocation();
 	}
-	// Make sure we have access to users location
-	getWeather = () => {
+
+	getLocation = () => {
 		if ("geolocation" in navigator) {
-			navigator.geolocation.getCurrentPosition(this.successWeather, this.errorWeather);
+			navigator.geolocation.getCurrentPosition(this.postSuccessLocation, this.postErrorLocation);
 		}
 	}
 	// Get location coordinates
-	successWeather = (position) => {
+	postSuccessLocation= (position) => {
 		const latitude = position.coords.latitude;
 		const longitude = position.coords.longitude;
+		// This API enables cross-origin requests to anywhere.
 		const url = `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=c00cca645196f43959e6a78d0ae0bdaa&units=metric`;
 
 		axios.get(url).then((res) => {
 		const data = res.data;
 		const temp = this.temperatureConverterCelsius(data.main.temp);
-		let imgSource = `http://openweathermap.org/img/w/${ data.weather[0].icon }.png`;
 	
-		this.setState({ location: `${data.name}, ${data.sys.country}`, degree: temp, main: data.weather[0].main, img: imgSource })
-		})
-
-		const urlDuplicate = `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?appid=c00cca645196f43959e6a78d0ae0bdaa&lat=${latitude}&lon=${longitude}&units=metric&cnt=8`
-		let weatherList = [];
-
-		axios.get(urlDuplicate).then(( res ) => {
-		res.data.list.forEach((obj) => {
-			let utc = obj.dt;
-			let d = new Date(0);
-			d.setUTCSeconds(utc);
-			let hour = d.getHours();
-
-			if(hour < 13 && hour >= 0) {
-				hour = `${hour} AM`
-			} else {
-				hour = `${hour - 12} PM`
-			}
-			const temp = this.temperatureConverterCelsius(obj.main.temp);
-			const description = obj.weather[0].main;         
-			const prefix = 'http://res.cloudinary.com/marvel451/image/upload/';
-			let weatherIcons =
-			[
-				'v1525070596/sunny.svg',
-				'v1525070599/cloud-one_iiddgh.svg',
-				'v1525070596/cloud-three_isrrou.svg',
-				'v1525070596/thunder_hw7uyx.svg',
-				'v1525140183/snowy.svg',
-				'v1525070596/slightly-cloudy-day_ljjffu.svg',
-				'v1525070596/slightly-cloudy-night_xchkwe.svg'
-			];
-
-			let img = null;
-			
-			if (description === "clear sky" ) {
-				img = `${ prefix + weatherIcons[0] }`
-			}   
-			if (description === "rain" ) {
-				img = `${ prefix + weatherIcons[1] }`
-			}
-			if (description === "shower rain" ) {
-				img = `${ prefix + weatherIcons[2] }`
-			}
-			if (description === "thunderstorm" ) {
-				img = `${ prefix + weatherIcons[3] }`
-			}
-			if (description === "snow" ) {
-				img = `${ prefix + weatherIcons[4] }`
-			}
-			if (description === "clouds" || "scattered clouds" || "few clouds" ) {
-				img = `${ prefix + weatherIcons[5] }`
-			}
-			if (hour === "8 PM" || hour === "11 PM" || hour ===  "2 AM" || hour ===  "5 AM"  ) {
-				img = `${ prefix + weatherIcons[6] }`
-			}
-
-			weatherList.push({hour, temp, description, img});
-		})
-		this.setState({ forecast: weatherList });
+		this.setState({ location: `${data.name}, ${data.sys.country}`, degree: temp, main: data.weather[0].main })
 		})
 	}
 
-	reloadApp = () => {
+	reloadLocation = () => {
 		this.setState({ state: this.state });
 	}
 
-	errorWeather = (error) => {
+	postErrorLocation = (error) => {
 		alert("UPS! I can't find your location");
 	}
 
 	render() {
 		return (
 			<div className="app">
-				<header className="app-header">
-					<img src={weather}  className="app-logo" alt="logo pogody" />
-					<h1 className="app-title">pogódka.pl</h1>
+				<section className="app-header">
+					<img src={weather}  className="app-logo" alt="logo-image" />
 					<p className="app-intro"> I found you in </p>
 					<h2>{this.state.location} </h2>
-					<button className="app-not" onClick={this.reloadApp}>Reload</button>
-				</header>
-		
+					<button className="app-not" onClick={this.reloadLocation}>RELOAD</button>
+				</section>
 				<section className="app-weather">
-					<h2 className="app-temp">{ this.state.degree }  C<br/>
+					<h2 className="app-temp">{ this.state.degree }  C  <br/>
 						<span className="app-condition">{ this.state.main } </span>
 					</h2>
-					
-					<div className="grid-container">
-						{ 
-							this.state.forecast.map(( obj) => {            
-								return <div key={ obj.id }>
-										<p className="app-time"> { obj.hour } </p>
-										<p className="app-degrees"> { obj.temp } F  </p>
-										<img className="app-icons"  src={ obj.img }  alt= "weather-icon"/>
-									</div>
-							}) 
-						}
-					</div>
 				</section>
-			</div> // app
+			</div> 
 		);
 	}
 }
