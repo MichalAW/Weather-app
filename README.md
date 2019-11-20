@@ -2,7 +2,7 @@
 Weather-app based on React using API on ES6, title pogódka.pl by Michał Wanta
 
 1. Repo -> https://github.com/MichalAW/Weather-app.git
-2. Heroku site ->
+2. Heroku site -> https://pogodkapl.herokuapp.com/
 
 
 # How it works?
